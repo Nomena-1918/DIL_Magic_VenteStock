@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Configuration class for OpenAPI/Swagger documentation.
+ * Classe de configuration pour la documentation OpenAPI/Swagger.
  */
 @Configuration
 public class OpenApiConfig {
@@ -18,7 +18,7 @@ public class OpenApiConfig {
         return new OpenAPI()
                 .info(new Info()
                         .title("DIL Magic Vente Stock API")
-                        .description("API for managing products in the DIL Magic Vente Stock application")
+                        .description("API pour la gestion des produits dans l'application DIL Magic Vente Stock")
                         .version("1.0.0")
                         .contact(new Contact()
                                 .name("DIL Magic Team")

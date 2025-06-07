@@ -1,7 +1,7 @@
--- PostgreSQL Database Creation Script
--- Run this script as a PostgreSQL superuser (e.g., postgres) before running schema.sql
+-- Script de création de base de données PostgreSQL
+-- Exécutez ce script en tant que superutilisateur PostgreSQL (par exemple, postgres) avant d'exécuter schema.sql
 
--- Create the database if it doesn't exist
+-- Créer la base de données si elle n'existe pas
 DO
 $$
 BEGIN
@@ -11,5 +11,5 @@ BEGIN
 END
 $$;
 
--- Note: After running this script, connect to the new database and run schema.sql
--- to create the user, tables, and other database objects.
+-- Remarque : Après avoir exécuté ce script, connectez-vous à la nouvelle base de données et exécutez schema.sql
+-- pour créer l'utilisateur, les tables et autres objets de la base de données.

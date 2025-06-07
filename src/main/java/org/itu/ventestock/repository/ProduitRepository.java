@@ -5,8 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * Repository interface for Produit entity.
- * Provides methods to interact with the database for Produit entities.
+ * Interface de repository pour l'entité Produit.
+ * Fournit des méthodes pour interagir avec la base de données pour les entités Produit.
  */
 public interface ProduitRepository extends JpaRepository<Produit, Long> {
 }

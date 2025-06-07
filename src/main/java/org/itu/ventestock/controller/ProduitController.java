@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * REST controller for managing products.
+ * Contrôleur REST pour la gestion des produits.
  */
 @RestController
 @RequestMapping("/api/produits")
-@Tag(name = "Produit", description = "The Produit API")
+@Tag(name = "Produit", description = "L'API des Produits")
 public class ProduitController {
 
     private final ProduitService produitService;
@@ -29,13 +29,13 @@ public class ProduitController {
     }
 
     /**
-     * GET /api/produits : Get all products.
+     * GET /api/produits : Récupère tous les produits.
      *
-     * @return the ResponseEntity with status 200 (OK) and the list of products in body
+     * @return le ResponseEntity avec le statut 200 (OK) et la liste des produits dans le corps
      */
     @GetMapping
-    @Operation(summary = "Get all products", description = "Returns a list of all available products")
-    @ApiResponse(responseCode = "200", description = "Successfully retrieved list of products",
+    @Operation(summary = "Récupérer tous les produits", description = "Renvoie une liste de tous les produits disponibles")
+    @ApiResponse(responseCode = "200", description = "Liste des produits récupérée avec succès",
             content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = Produit.class)))
     public ResponseEntity<List<Produit>> getAllProduits() {
@@ -44,22 +44,22 @@ public class ProduitController {
     }
 
     /**
-     * GET /api/produits/:id : Get a product by id.
+     * GET /api/produits/:id : Récupère un produit par son id.
      *
-     * @param id the id of the product to retrieve
-     * @return the ResponseEntity with status 200 (OK) and with body the product, or with status 404 (Not Found)
+     * @param id l'identifiant du produit à récupérer
+     * @return le ResponseEntity avec le statut 200 (OK) et le produit dans le corps, ou avec le statut 404 (Non trouvé)
      */
     @GetMapping("/{id}")
-    @Operation(summary = "Get a product by id", description = "Returns a product as per the id")
+    @Operation(summary = "Récupérer un produit par id", description = "Renvoie un produit selon l'id fourni")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Successfully retrieved product",
+            @ApiResponse(responseCode = "200", description = "Produit récupéré avec succès",
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = Produit.class))),
-            @ApiResponse(responseCode = "404", description = "Product not found",
+            @ApiResponse(responseCode = "404", description = "Produit non trouvé",
                     content = @Content)
     })
     public ResponseEntity<Produit> getProduitById(
-            @Parameter(description = "ID of the product to be obtained", required = true)
+            @Parameter(description = "ID du produit à récupérer", required = true)
             @PathVariable Long id) {
         return produitService.getProduitById(id)
                 .map(ResponseEntity::ok)

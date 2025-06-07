@@ -1,4 +1,4 @@
--- Insert statements for the product dataset
+-- Instructions d'insertion pour le jeu de données des produits
 INSERT INTO t_produit (reference, libelle, est_du_jour, prix, quantite_en_stock)
 VALUES ('PROD001', 'Chapeau Magique', false, 100000, 20);
 
