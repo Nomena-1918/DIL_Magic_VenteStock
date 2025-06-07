@@ -16,7 +16,7 @@ Magic Vente Stock est une application Spring Boot qui permet de gérer un invent
 
 1. Cloner le dépôt
    ```bash
-   git clone [URL_DU_DEPOT]
+   git clone https://github.com/Nomena-1918/DIL_Magic_VenteStock
    cd DIL_Magic_VenteStock
    ```
 
@@ -26,7 +26,7 @@ Magic Vente Stock est une application Spring Boot qui permet de gérer un invent
    ```bash
    # Se connecter à PostgreSQL en tant que superutilisateur
    psql -U postgres
-   
+
    # Exécuter les scripts
    \i database/create_database.sql
    \c dil_magic_vente_stock
@@ -79,12 +79,6 @@ DIL_Magic_VenteStock/
 └── README.md                      # Ce fichier
 ```
 
-## API REST
-
-L'application expose les endpoints suivants:
-
-- `GET /api/produits` - Récupérer tous les produits
-- `GET /api/produits/{id}` - Récupérer un produit par son ID
 
 ## Configuration
 
