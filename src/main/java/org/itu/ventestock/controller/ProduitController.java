@@ -9,6 +9,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.itu.ventestock.model.Produit;
 import org.itu.ventestock.service.ProduitService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,18 +32,46 @@ public class ProduitController {
         this.produitService = produitService;
     }
 
+
     /**
-     * GET /api/produits : Récupère tous les produits.
+     * GET /api/produits : Récupère tous les produits avec pagination et tri.
      *
-     * @return le ResponseEntity avec le statut 200 (OK) et la liste des produits dans le corps
+     * @param page le numéro de la page à récupérer (commence à 0)
+     * @param size le nombre d'éléments par page (par défaut 3)
+     * @param sort le champ sur lequel trier (par défaut "id")
+     * @param direction la direction du tri (ASC ou DESC, par défaut ASC)
+     * @return le ResponseEntity avec le statut 200 (OK) et la page de produits dans le corps
+     * 
+     * @example GET /api/produits?page=0&size=3&sort=prix&direction=DESC
+     * Récupère la première page de 3 produits triés par prix décroissant
      */
     @GetMapping
-    @Operation(summary = "Récupérer tous les produits", description = "Renvoie une liste de tous les produits disponibles")
-    @ApiResponse(responseCode = "200", description = "Liste des produits récupérée avec succès",
-            content = @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = Produit.class)))
-    public ResponseEntity<List<Produit>> getAllProduits() {
-        List<Produit> produits = produitService.getAllProduits();
+    @Operation(
+        summary = "Récupérer les produits avec pagination et tri", 
+        description = "Renvoie une page de produits selon les paramètres de pagination et de tri fournis"
+    )
+    @ApiResponse(
+        responseCode = "200", 
+        description = "Page de produits récupérée avec succès",
+        content = @Content(mediaType = "application/json", schema = @Schema(implementation = Page.class))
+    )
+    public ResponseEntity<Page<Produit>> getAllProduits(
+            @Parameter(description = "Numéro de page (commence à 0)", example = "0")
+            @RequestParam(defaultValue = "0") int page,
+
+            @Parameter(description = "Nombre d'éléments par page", example = "3")
+            @RequestParam(defaultValue = "3") int size,
+
+            @Parameter(description = "Champ sur lequel trier", example = "id")
+            @RequestParam(defaultValue = "id") String sort,
+
+            @Parameter(description = "Direction du tri (ASC ou DESC)", example = "ASC")
+            @RequestParam(defaultValue = "ASC") String direction) {
+
+        Sort.Direction sortDirection = Sort.Direction.fromString(direction);
+        Pageable pageable = PageRequest.of(page, size, sortDirection, sort);
+
+        Page<Produit> produits = produitService.getAllProduits(pageable);
         return ResponseEntity.ok(produits);
     }
 

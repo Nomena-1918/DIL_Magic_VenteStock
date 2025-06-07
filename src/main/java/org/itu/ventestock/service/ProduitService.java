@@ -3,6 +3,8 @@ package org.itu.ventestock.service;
 import org.itu.ventestock.model.Produit;
 import org.itu.ventestock.repository.ProduitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,6 +30,16 @@ public class ProduitService {
      */
     public List<Produit> getAllProduits() {
         return produitRepository.findAll();
+    }
+
+    /**
+     * Récupère tous les produits avec pagination et tri.
+     *
+     * @param pageable Informations de pagination et de tri
+     * @return Page de produits
+     */
+    public Page<Produit> getAllProduits(Pageable pageable) {
+        return produitRepository.findAll(pageable);
     }
 
     /**
