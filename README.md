@@ -14,6 +14,8 @@ Magic Vente Stock est une application Spring Boot qui permet de gérer un invent
 
 ## Installation
 
+### Option 1: Installation locale
+
 1. Cloner le dépôt
    ```bash
    git clone https://github.com/Nomena-1918/DIL_Magic_VenteStock
@@ -46,6 +48,28 @@ Magic Vente Stock est une application Spring Boot qui permet de gérer un invent
    # Avec le wrapper Gradle
    ./gradlew bootRun
    ```
+
+### Option 2: Utilisation de Docker
+
+1. Cloner le dépôt
+   ```bash
+   git clone https://github.com/Nomena-1918/DIL_Magic_VenteStock
+   cd DIL_Magic_VenteStock
+   ```
+
+2. Construire l'image Docker
+   ```bash
+   docker build -t magic-vente-stock .
+   ```
+
+3. Exécuter le conteneur Docker
+   ```bash
+   docker run -p 8000:8000 magic-vente-stock
+   ```
+
+   **Note**: Cette configuration Docker n'inclut pas la base de données. Pour une utilisation complète, vous devrez:
+   - Configurer une base de données PostgreSQL séparément
+   - Modifier la configuration de l'application pour se connecter à cette base de données
 
 ## Utilisation
 
