@@ -1,5 +1,5 @@
--- User creation
--- Note: In PostgreSQL, we use IF NOT EXISTS with DO block for conditional user creation
+-- Création de l'utilisateur
+-- Remarque : Dans PostgreSQL, nous utilisons IF NOT EXISTS avec un bloc DO pour la création conditionnelle d'utilisateur
 DO
 $$
     BEGIN
@@ -9,7 +9,7 @@ $$
     END
 $$;
 
--- Grant all privileges to the user
+-- Accorder tous les privilèges à l'utilisateur
 GRANT ALL PRIVILEGES ON DATABASE dil_magic_vente_stock TO "dil";
 
 -- Droits sur toutes les tables existantes
@@ -26,5 +26,3 @@ GRANT ALL PRIVILEGES
 GRANT USAGE
     ON SCHEMA public
     TO dil;
-
-

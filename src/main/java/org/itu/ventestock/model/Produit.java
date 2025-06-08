@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 /**
- * Entity representing a product in the system.
- * Maps to the t_produit table in the database.
+ * Entité représentant un produit dans le système.
+ * Correspond à la table t_produit dans la base de données.
  */
 @Entity
 @Table(name = "t_produit")
