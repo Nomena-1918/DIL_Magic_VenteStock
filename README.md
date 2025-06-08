@@ -106,11 +106,36 @@ DIL_Magic_VenteStock/
 
 ## Configuration
 
+### Fichiers de configuration
+
 La configuration de l'application se trouve dans le fichier `src/main/resources/application.yml`:
 
 - Port du serveur: 8000
 - Chemin de contexte: /magic-vente-stock
-- Base de données: PostgreSQL sur localhost:5432/dil_magic_vente_stock
+- Base de données: PostgreSQL (configuration via variables d'environnement)
+
+### Variables d'environnement
+
+L'application utilise des variables d'environnement pour la configuration de la base de données. Deux fichiers sont fournis:
+
+- `.env.example`: Un exemple de fichier de configuration avec des valeurs fictives. Ce fichier est versionné dans Git.
+- `.env`: Le fichier de configuration réel avec vos valeurs personnelles. Ce fichier est ignoré par Git pour des raisons de sécurité.
+
+Pour configurer l'application:
+
+1. Copiez le fichier `.env.example` vers `.env`
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Modifiez le fichier `.env` avec vos propres valeurs:
+   ```
+   DB_HOST=localhost
+   DB_PORT=5432
+   DB_NAME=dil_magic_vente_stock
+   USERNAME=dil
+   PASSWORD=root
+   ```
 
 ## Technologies utilisées
 
