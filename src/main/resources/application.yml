@@ -3,9 +3,9 @@ spring:
     name: magic-vente-stock
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/dil_magic_vente_stock
+    url: jdbc:postgresql://${DATASOURCE_HOST:localhost}:${DATASOURCE_PORT:5432}/${DATASOURCE_PORT:dil_magic_vente_stock}
     username: ${USERNAME:dil}
-    password: ${password:root}
+    password: ${PASSWORD:root}
   jpa:
     hibernate:
       ddl-auto: none
