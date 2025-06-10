@@ -2,21 +2,23 @@ package org.itu.ventestock.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Immutable;
 
 /**
- * Entité représentant un produit dans le système.
- * Correspond à la table t_produit dans la base de données.
+ * Entité en lecture seule représentant un produit avec sa quantité en stock.
+ * Mappée à la vue SQL 'v_produit_stock'.
  */
 @Entity
-@Table(name = "t_produit")
+@Table(name = "v_produit_stock")
 @Getter
-@Setter
+@Immutable
 @NoArgsConstructor
 @AllArgsConstructor
-public class Produit {
+@ToString
+@Builder
+public class ProduitStock {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pk_id")
     private Long id;
 
@@ -31,4 +33,7 @@ public class Produit {
 
     @Column(name = "prix")
     private Double prix;
+
+    @Column(name = "quantite_en_stock")
+    private Integer quantiteStock;
 }

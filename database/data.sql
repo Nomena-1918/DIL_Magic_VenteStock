@@ -7,17 +7,17 @@ TRUNCATE TABLE t_transaction, t_produit RESTART IDENTITY;
 
 -- Instructions d'insertion pour le jeu de données des produits
 -- Note: Les pk_id sont explicitement définis pour la clarté
-INSERT INTO t_produit (pk_id, reference, libelle, est_du_jour, prix, quantite_en_stock)
+INSERT INTO t_produit (pk_id, reference, libelle, est_du_jour, prix)
 VALUES 
-  (1, 'PROD001', 'Chapeau Magique', false, 100000, 20),
-  (2, 'PROD002', 'Anneau des cieux', true, 250000, 250),
-  (3, 'PROD003', 'Épée Tranchante', false, 25000, 2),
-  (4, 'PROD004', 'Baguette Mystique', true, 150000, 15),
-  (5, 'PROD005', 'Potion d''Invisibilité', false, 75000, 30),
-  (6, 'PROD006', 'Grimoire des Anciens', true, 300000, 5),
-  (7, 'PROD007', 'Amulette de Protection', false, 120000, 25),
-  (8, 'PROD008', 'Cape d''Invisibilité', true, 200000, 10),
-  (9, 'PROD009', 'Bottes de Célérité', false, 90000, 18);
+  (1, 'PROD001', 'Chapeau Magique', false, 100000),
+  (2, 'PROD002', 'Anneau des cieux', true, 250000),
+  (3, 'PROD003', 'Épée Tranchante', false, 25000),
+  (4, 'PROD004', 'Baguette Mystique', true, 150000),
+  (5, 'PROD005', 'Potion d''Invisibilité', false, 75000),
+  (6, 'PROD006', 'Grimoire des Anciens', true, 300000),
+  (7, 'PROD007', 'Amulette de Protection', false, 120000),
+  (8, 'PROD008', 'Cape d''Invisibilité', true, 200000),
+  (9, 'PROD009', 'Bottes de Célérité', false, 90000);
 
 -- Transactions d'entrée de stock pour initialiser les quantités
 -- Type 1 = Entrée de stock, Type 2 = Sortie de stock

@@ -4,8 +4,7 @@ create table t_produit(
     reference varchar not null,
     libelle varchar not null,
     est_du_jour boolean,
-    prix float8 check ( prix > 0 ),
-    quantite_en_stock int check ( quantite_en_stock >= 0 )
+    prix float8 check ( prix > 0 )
 );
 
 -- Table: gestion stock
@@ -17,3 +16,19 @@ create table t_transaction(
     type_transaction int check ( type_transaction in (1, 2) ),
     FOREIGN KEY (produit_id) REFERENCES t_produit(pk_id)
 );
+
+-- View: produit avec quantité en stock
+create view v_produit_stock as
+select 
+    p.pk_id,
+    p.reference,
+    p.libelle,
+    p.est_du_jour,
+    p.prix,
+    coalesce(sum(case when t.type_transaction = 1 then t.quantite else -t.quantite end), 0) as quantite_en_stock 
+from
+    t_produit p
+left join
+    t_transaction t on p.pk_id = t.produit_id
+group by
+    p.pk_id, p.reference, p.libelle, p.est_du_jour, p.prix;

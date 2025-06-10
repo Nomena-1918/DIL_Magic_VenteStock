@@ -1,7 +1,7 @@
 package org.itu.ventestock.service;
 
-import org.itu.ventestock.model.Produit;
-import org.itu.ventestock.repository.ProduitRepository;
+import org.itu.ventestock.model.ProduitStock;
+import org.itu.ventestock.repository.ProduitStockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,10 +17,10 @@ import java.util.Optional;
 @Service
 public class ProduitService {
 
-    private final ProduitRepository produitRepository;
+    private final ProduitStockRepository produitStockRepository;
 
-    public ProduitService(ProduitRepository produitRepository) {
-        this.produitRepository = produitRepository;
+    public ProduitService(ProduitStockRepository produitStockRepository) {
+        this.produitStockRepository = produitStockRepository;
     }
 
     /**
@@ -28,8 +28,8 @@ public class ProduitService {
      *
      * @return Liste de tous les produits
      */
-    public List<Produit> getAllProduits() {
-        return produitRepository.findAll();
+    public List<ProduitStock> getAllProduits() {
+        return produitStockRepository.findAll();
     }
 
     /**
@@ -38,8 +38,8 @@ public class ProduitService {
      * @param pageable Informations de pagination et de tri
      * @return Page de produits
      */
-    public Page<Produit> getAllProduits(Pageable pageable) {
-        return produitRepository.findAll(pageable);
+    public Page<ProduitStock> getAllProduits(Pageable pageable) {
+        return produitStockRepository.findAll(pageable);
     }
 
     /**
@@ -48,7 +48,7 @@ public class ProduitService {
      * @param id L'ID du produit à récupérer
      * @return Optional contenant le produit s'il est trouvé, vide sinon
      */
-    public Optional<Produit> getProduitById(Long id) {
-        return produitRepository.findById(id);
+    public Optional<ProduitStock> getProduitById(Long id) {
+        return produitStockRepository.findById(id);
     }
 }
