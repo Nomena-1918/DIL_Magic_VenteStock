@@ -7,7 +7,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.itu.ventestock.model.Produit;
+import org.itu.ventestock.model.ProduitStock;
 import org.itu.ventestock.service.ProduitService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,8 +15,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * Contrôleur REST pour la gestion des produits.
@@ -55,7 +53,7 @@ public class ProduitController {
         description = "Page de produits récupérée avec succès",
         content = @Content(mediaType = "application/json", schema = @Schema(implementation = Page.class))
     )
-    public ResponseEntity<Page<Produit>> getAllProduits(
+    public ResponseEntity<Page<ProduitStock>> getAllProduits(
             @Parameter(description = "Numéro de page (commence à 0)", example = "0")
             @RequestParam(defaultValue = "0") int page,
 
@@ -71,7 +69,7 @@ public class ProduitController {
         Sort.Direction sortDirection = Sort.Direction.fromString(direction);
         Pageable pageable = PageRequest.of(page, size, sortDirection, sort);
 
-        Page<Produit> produits = produitService.getAllProduits(pageable);
+        Page<ProduitStock> produits = produitService.getAllProduits(pageable);
         return ResponseEntity.ok(produits);
     }
 
@@ -86,11 +84,11 @@ public class ProduitController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Produit récupéré avec succès",
                     content = @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Produit.class))),
+                            schema = @Schema(implementation = ProduitStock.class))),
             @ApiResponse(responseCode = "404", description = "Produit non trouvé",
                     content = @Content)
     })
-    public ResponseEntity<Produit> getProduitById(
+    public ResponseEntity<ProduitStock> getProduitById(
             @Parameter(description = "ID du produit à récupérer", required = true)
             @PathVariable Long id) {
         return produitService.getProduitById(id)

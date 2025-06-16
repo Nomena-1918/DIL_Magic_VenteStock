@@ -2,7 +2,6 @@ package org.itu.ventestock.repository;
 
 import org.itu.ventestock.model.Produit;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 /**
  * Interface de repository pour l'entité Produit.
