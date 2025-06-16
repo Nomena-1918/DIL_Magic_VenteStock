@@ -11,10 +11,12 @@ create table t_produit(
 create table t_transaction(
     pk_id serial primary key,
     produit_id int not null,
+    user_id int not null,
     quantite int check ( quantite >= 0 ),
     date_ajout timestamp default current_timestamp,
     type_transaction int check ( type_transaction in (1, 2) ),
-    FOREIGN KEY (produit_id) REFERENCES t_produit(pk_id)
+    FOREIGN KEY (produit_id) REFERENCES t_produit(pk_id),
+    FOREIGN KEY (user_id) REFERENCES t_user(pk_id)
 );
 
 -- Table: user
