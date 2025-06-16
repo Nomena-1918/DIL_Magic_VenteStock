@@ -1,10 +1,3 @@
-BEGIN;
--- Désactiver temporairement les contraintes de clé étrangère
-SET CONSTRAINTS ALL DEFERRED;
-
--- Vider les tables existantes (l'ordre est important à cause des clés étrangères)
-TRUNCATE TABLE t_transaction, t_produit RESTART IDENTITY;
-
 -- Instructions d'insertion pour le jeu de données des produits
 -- Note: Les pk_id sont explicitement définis pour la clarté
 INSERT INTO t_produit (pk_id, reference, libelle, est_du_jour, prix)
@@ -38,7 +31,3 @@ VALUES
   (7, 7, 25, 1, '2025-01-04 10:00:00'),
   (8, 8, 10, 1, '2025-01-04 11:30:00'),
   (9, 9, 18, 1, '2025-01-05 13:45:00');
-
--- Pas besoin de réactiver les contraintes avec SET CONSTRAINTS
--- car elles sont automatiquement réactivées à la fin de la transaction
-COMMIT;
