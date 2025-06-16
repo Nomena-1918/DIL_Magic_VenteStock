@@ -19,6 +19,12 @@ VALUES
   (8, 'PROD008', 'Cape d''Invisibilité', true, 200000),
   (9, 'PROD009', 'Bottes de Célérité', false, 90000);
 
+-- Instructions d'insertion pour le jeu de données des utilisateurs
+INSERT INTO t_user (pk_id, pseudo, nom, prenom, mot_de_passe)
+VALUES 
+  (1, 'frodon', 'Baggins', 'Frodon', 'admin'),
+  (2, 'sam', 'Baggins', 'Samwise', 'user');
+
 -- Transactions d'entrée de stock pour initialiser les quantités
 -- Type 1 = Entrée de stock, Type 2 = Sortie de stock
 INSERT INTO t_transaction (pk_id, produit_id, quantite, type_transaction, date_ajout)
