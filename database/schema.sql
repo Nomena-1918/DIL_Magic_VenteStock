@@ -23,7 +23,7 @@ create table t_user(
     pseudo varchar not null,
     nom varchar not null,
     prenom varchar not null,
-    mot_de_passe varchar not null,
+    mot_de_passe varchar not null
 );
 
 -- Table: panier
